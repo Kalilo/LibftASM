@@ -19,7 +19,24 @@ section .text
 _ft_bzero:
 	push	rbp
 	movq	rbp, rsp
-	sub		rsp, 16
-	; add code here
-	pop		rbp
+
+	; Init Variables
+	movq	rdi, -8(rbp) ; l = s
+	movq	0, -16(rdp) ; k = 0
+	; n = rsi
+	
+
+	; while (k < n)
+loop:
+	movq	-8(rbp), rax
+	cmpq	rsi, rax
+	jae		exit
+; {
+
+
+	addq	1, -16(rdp)
+	jmp		loop	
+; }
+exit:
+	leave
 	ret
