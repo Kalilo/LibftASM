@@ -13,10 +13,10 @@
 section .data
 
 section .text
-	global ft_bzero
+	global _ft_bzero
 	default rel
 
-ft_bzero:
+_ft_bzero:
 	push	rbp
 	movq	rbp, rsp
 	sub		rsp, 16
