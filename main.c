@@ -97,22 +97,22 @@ void	test_part2(void)
 		puts((pass2) ? "ft_memcpy: PASSED" : "ft_memcpy: FAILED");
 	}
 
-	// /*test ft_strdup*/ {
-	// 	puts("Testing: ft_strdup");
-	// 	pass2 = 1;
-	// 	char	*str;
-	// 	char	*s2 = "Hello Worlds!";
-	// 	str = ft_strdup(s2);
-	// 	if (strcmp(str, s2))
-	// 		pass = (pass2 = 0);
-	// 	free(str);
-	// 	s2 = "";
-	// 	str = ft_strdup(s2);
-	// 	if (strcmp(str, s2))
-	// 		pass = (pass2 = 0);
-	// 	free(str);
-	// 	puts((pass2) ? "ft_strdup: PASSED" : "ft_strdup: FAILED");
-	// }
+	/*test ft_strdup*/ {
+		puts("Testing: ft_strdup");
+		pass2 = 1;
+		char	*str;
+		char	*s2 = "Hello Worlds!";
+		str = ft_strdup(s2);
+		if (strcmp(str, s2))
+			pass = (pass2 = 0);
+		// free(str);
+		// s2 = "";
+		// str = ft_strdup(s2);
+		// if (strcmp(str, s2))
+		// 	pass = (pass2 = 0);
+		// free(str);
+		puts((pass2) ? "ft_strdup: PASSED" : "ft_strdup: FAILED");
+	}
 
 	/*end*/
 	if (pass)
