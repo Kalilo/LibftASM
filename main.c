@@ -23,20 +23,22 @@ void	error_quit(char *msg)
 
 void	test_part1(void)
 {
+	puts("--- PART1 ---");
 	char	pass = 1;
 	char	pass2;
 
-	/*test bzero*/
-	puts("Testing: bzero");
-	pass2 = 1;
-	char	*str1 = (char *)malloc(5);
-	for (int k = 0; k < 5; k++)
-		str1[k] = 101;
-	ft_bzero(&str1, 5);
-	for (int k = 0; k < 5; k++)
-		if (str1[k] != 0)
-			pass = (pass2 = 0);
-	puts((pass2) ? "bzero: PASSED" : "bzero: FAILED");
+	/*test ft_bzero*/ {
+		puts("Testing: ft_bzero");
+		pass2 = 1;
+		char	*str1 = (char *)malloc(5);
+		for (int k = 0; k < 5; k++)
+			str1[k] = 101;
+		ft_bzero(&str1, 5);
+		for (int k = 0; k < 5; k++)
+			if (str1[k] != 0)
+				pass = (pass2 = 0);
+		puts((pass2) ? "ft_bzero: PASSED" : "ft_bzero: FAILED");
+	}
 
 	/*end*/
 	if (pass)
@@ -45,8 +47,34 @@ void	test_part1(void)
 		puts("\nPart1: FAILED");
 }
 
+void	test_part2(void)
+{
+	puts("--- PART2 ---");
+	char	pass = 1;
+	char	pass2;
+
+	/*test ft_strlen*/ {
+		puts("Testing: ft_strlen");
+		pass2 = 1;
+		char	*str = "Hello worlds!";
+		if (ft_strlen(str) != strlen(str))
+			pass = (pass2 = 0);
+		str = "";
+		if (ft_strlen(str) != 0)
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strlen: PASSED" : "ft_strlen: FAILED");
+	}
+
+	/*end*/
+	if (pass)
+		puts("\nPart2: PASSED");
+	else
+		puts("\nPart2: FAILED");
+}
+
 int		main(void)
 {
 	test_part1();
+	test_part2();
 	return (0);
 }
