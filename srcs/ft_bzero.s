@@ -16,27 +16,19 @@ section .text
 	global _ft_bzero
 	default rel
 
+;void	ft_bzero(void *s, size_t n)
 _ft_bzero:
 	push	rbp
-	movq	rbp, rsp
+	mov		rbp, rsp
 
 	; Init Variables
-	movq	rdi, -8(rbp) ; l = s
-	movq	0, -16(rdp) ; k = 0
-	; n = rsi
-	
+	mov		rax, rdi
+	mov		rcx, rsi
+	mov		ax, 0
 
-	; while (k < n)
-loop:
-	movq	-8(rbp), rax
-	cmpq	rsi, rax
-	jae		exit
-; {
+	;loop
+	cld
+	rep 	stosb
 
-
-	addq	1, -16(rdp)
-	jmp		loop	
-; }
-exit:
 	leave
 	ret
