@@ -37,6 +37,7 @@ void	test_part1(void)
 		for (int k = 0; k < 5; k++)
 			if (str1[k] != 0)
 				pass = (pass2 = 0);
+		ft_bzero(&str1, 0);
 		puts((pass2) ? "ft_bzero: PASSED" : "ft_bzero: FAILED");
 	}
 
