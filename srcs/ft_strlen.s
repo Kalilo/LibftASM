@@ -23,16 +23,17 @@ _ft_strlen:
 	mov		rbp, rsp
 
 	;init variables
-	mov		rax, 0
+	mov		rax, rdi
 
 	;loop
 loop:
-	cmp		byte[rdi], 0
+	cmp		byte[rax], 0
 	je		end
-	inc		rdi
 	inc		rax
 	jmp		loop
 
 end:
+	sub		rax, rdi
+
 	leave
 	ret
