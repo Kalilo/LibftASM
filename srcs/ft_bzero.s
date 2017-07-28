@@ -22,9 +22,9 @@ _ft_bzero:
 	mov		rbp, rsp
 
 	; Init Variables
-	mov		rax, rdi
-	mov		rcx, rsi
-	mov		ax, 0
+	mov		rdi, [rdi]; *s
+	mov		rcx, rsi; n
+	mov		al, 0
 
 	;loop
 	cld

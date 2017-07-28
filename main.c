@@ -27,6 +27,7 @@ void	test_part1(void)
 	char	pass2;
 
 	/*test bzero*/
+	puts("Testing: bzero");
 	pass2 = 1;
 	char	*str1 = (char *)malloc(5);
 	for (int k = 0; k < 5; k++)
@@ -39,9 +40,9 @@ void	test_part1(void)
 
 	/*end*/
 	if (pass)
-		puts("Part1: PASSED");
+		puts("\nPart1: PASSED");
 	else
-		puts("Part1: FAILED");
+		puts("\nPart1: FAILED");
 }
 
 int		main(void)
