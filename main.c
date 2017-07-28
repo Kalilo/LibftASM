@@ -66,6 +66,25 @@ void	test_part2(void)
 		puts((pass2) ? "ft_strlen: PASSED" : "ft_strlen: FAILED");
 	}
 
+	/*test ft_memset*/ {
+		puts("Testing: ft_memset");
+		pass2 = 1;
+		char	*tmp = (char *)malloc(100);
+		memcpy(tmp, "Hello there!", 13);
+		ft_memset(tmp, 42, 50);
+		for (int k = 0; k < 50; k++)
+			if (tmp[k] != 42)
+				pass = (pass2 = 0);
+		ft_memset(tmp, 'A', 5);
+		if (tmp[5] != 42)
+			pass = (pass2 = 0);
+		ft_memset(tmp, '\0', 5);
+		if (!strcmp(tmp, "AAAAA"))
+			pass = (pass2 = 0);
+		free(tmp);
+		puts((pass2) ? "ft_memset: PASSED" : "ft_memset: FAILED");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart2: PASSED");
