@@ -13,6 +13,8 @@
 NAME = libfts.a
 
 SRCS_NAME =		ft_bzero.s			\
+				\
+				ft_strlen.s			\
 
 HEADER_NAMES =	libfts.h			\
 

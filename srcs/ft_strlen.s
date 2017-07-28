@@ -13,22 +13,21 @@
 section .data
 
 section .text
-	global _ft_strcat
+	global _ft_strlen
 	default rel
 
 ;size_t	ft_strlen(const char *s)
 
-_ft_strcat:
+_ft_strlen:
 	push	rbp
 	mov		rbp, rsp
 
 	;init variables
-	mov		rcx, rsi
-	mov		bx, 0
+	mov		rcx, rsi; s
 
 	;loop
 	cld
-	repnz	cmpb	rcx, bx
+	; repnz	cmpb	rcx, bx
 
 	leave
 	ret
