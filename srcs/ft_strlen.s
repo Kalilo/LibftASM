@@ -23,11 +23,16 @@ _ft_strlen:
 	mov		rbp, rsp
 
 	;init variables
-	mov		rcx, rsi; s
+	mov		rax, 0
 
 	;loop
-	cld
-	; repnz	cmpb	rcx, bx
+loop:
+	cmp		byte[rdi], 0
+	je		end
+	inc		rdi
+	inc		rax
+	jmp		loop
 
+end:
 	leave
 	ret
