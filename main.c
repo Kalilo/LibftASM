@@ -23,14 +23,25 @@ void	error_quit(char *msg)
 
 void	test_part1(void)
 {
+	char	pass = 1;
+	char	pass2;
+
 	/*test bzero*/
+	pass2 = 1;
 	char	*str1 = (char *)malloc(5);
 	for (int k = 0; k < 5; k++)
 		str1[k] = 101;
 	ft_bzero(&str1, 5);
 	for (int k = 0; k < 5; k++)
 		if (str1[k] != 0)
-			error_quit("Bzero");
+			pass = (pass2 = 0);
+	puts((pass2) ? "bzero: PASSED" : "bzero: FAILED");
+
+	/*end*/
+	if (pass)
+		puts("Part1: PASSED");
+	else
+		puts("Part1: FAILED");
 }
 
 int		main(void)
