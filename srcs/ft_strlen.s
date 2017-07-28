@@ -26,11 +26,11 @@ _ft_strlen:
 	mov		rax, rdi
 
 	;loop
-loop:
+wloop:
 	cmp		byte[rax], 0
 	je		end
 	inc		rax
-	jmp		loop
+	jmp		wloop
 
 end:
 	sub		rax, rdi
