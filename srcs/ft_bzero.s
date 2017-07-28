@@ -22,7 +22,7 @@ _ft_bzero:
 	mov		rbp, rsp
 
 	; Init Variables
-	mov		rdi, [rdi]; *s
+	mov		rdi, [rdi]; s
 	mov		rcx, rsi; n
 	mov		al, 0
 
