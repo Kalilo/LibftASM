@@ -97,6 +97,11 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%$(EXT)
 odir:
 	@mkdir -p $(OBJS_PATH)
 
+test:
+	@make all
+	@gcc main.c $(NAME) -I $(INCLUDES_PATH)
+	@./a.out
+
 clean:
 	@$(call colourecho, " - Clearing object files")
 	@rm -f $(OBJS)
