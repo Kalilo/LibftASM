@@ -12,8 +12,13 @@
 
 #include "includes/libfts.h"
 
- #include <stdlib.h>
- #include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 void	error_quit(char *msg)
 {
@@ -135,9 +140,22 @@ void	test_part2(void)
 		puts("\nPart2: FAILED");
 }
 
+void	test_part3(void)
+{
+	char	buff[2048];
+	int		fd;
+
+	fd = read(0, buff, 2048);
+	buff[fd - 1] = '\0';
+	if (*buff && (fd = open(buff, O_RDONLY)) < 0)
+		error_quit("Can't open file");
+	ft_cat(fd);
+}
+
 int		main(void)
 {
 	test_part1();
 	test_part2();
+	test_part3();
 	return (0);
 }

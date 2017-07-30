@@ -27,8 +27,20 @@ _ft_cat:
 	cat_loop:
 	;read into buff
 	mov		rdi, r15
-	lea		[rel buff.buff]
-	mov		;
+	lea		rsi, [rel buff.buff]
+	mov		rdx, 2048
+	mov		rax, 0x2000003
+	syscall
+
+	;write to stdout
+	mov		rdi, 1
+	mov		rdx, rax
+	mov		rax, 0x2000004
+	syscall
+
+	;break if nothing was read
+	cmp		rax, 0
+	jne		cat_loop
 
 	leave
 	ret
