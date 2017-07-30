@@ -50,6 +50,7 @@ void	test_part1(void)
 		memcpy(str, "Hello World!", 13);
 		if (!strcmp(str, "Hello World! Look at me!"))
 			pass = (pass2 = 0);
+		free(str);
 		puts((pass2) ? "ft_strcat: PASSED" : "ft_strcat: FAILED");
 	}
 
