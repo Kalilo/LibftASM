@@ -38,7 +38,19 @@ void	test_part1(void)
 			if (str1[k] != 0)
 				pass = (pass2 = 0);
 		ft_bzero(&str1, 0);
+		free(str1);
 		puts((pass2) ? "ft_bzero: PASSED" : "ft_bzero: FAILED");
+	}
+
+	/*test ft_strcat*/ {
+		puts("Testing: ft_strcat");
+		pass2 = 1;
+
+		char	*str = malloc(50);
+		memcpy(str, "Hello World!", 13);
+		if (!strcmp(str, "Hello World! Look at me!"))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strcat: PASSED" : "ft_strcat: FAILED");
 	}
 
 	/*end*/
