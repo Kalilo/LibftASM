@@ -10,8 +10,6 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-section .data
-
 section .text
 	global _ft_strcat
 	extern _ft_strlen
