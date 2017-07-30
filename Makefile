@@ -111,7 +111,7 @@ clean:
 	@rm -f $(OBJS)
 	@$(call colourecho, "clean done!")
 
-fclean: clean del_server del_client
+fclean: clean
 	@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
 	@$(call colourecho, "fclean done")
