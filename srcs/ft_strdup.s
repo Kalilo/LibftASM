@@ -24,46 +24,35 @@ section .text
 _ft_strdup:
 	push	rbp
 	mov		rbp, rsp
-	sub		rsp, 32
+	; sub		rsp, 8; align the stack
 
-	; ft_strlen
-	mov		r8, rdi
+	mov		r14, rdi; save rdi in register which won't get overwritten
 
-	wloop:
-	cmp		byte[r8], 0
-	je		break_strlen
-	inc		r8
-	jmp		wloop
+	; call ft_strlen
+	push	rdi
+	call	_ft_strlen
+	pop		rdi
+	inc		rax; cater for '\0'
+	mov		r15, rax; store strlen
 
-	break_strlen:
-	sub		r8, rdi
-	add		r8, 1
-
-	; malloc
-	; push	r8
+	;call malloc
+	sub		rsp, 8; align the stack
+	push	r15
 	call	_malloc
-	test	rax, rax
-	jz		ret_null
+	pop		r8
+	mov		r13, rax
+	add		rsp, 8; undo alignment
 
-	; save str
-	mov		r9, rax
+	; memcpy
+	mov		rsi, r14
+	mov		rdi, r13
+	mov		rcx, r15
+	cld
+	rep		movsb
 
-	; ; dec		r8
-	; ;strcpy
-	; strcpy:
-	; cmp		r8, 0
-	; je		ret_r9
-	; mov		rax, r9
-	; mov		rbx, rdi
-	; add		rax, r8
-	; add		rbx, r8
-	; ; mov		rcx, [rbx]
-	; ; mov		[rax], rcx
-	; dec		r8
-	; jmp		strcpy
+	mov		rax, r13
 
 ret_r9:
-	mov		rax, r9
 	leave
 	ret
 
