@@ -71,6 +71,17 @@ void	test_part1(void)
 		puts((pass2) ? "ft_isalpha: PASSED" : "ft_isalpha: FAILED");
 	}
 
+	/*test ft_isdigit*/ {
+		puts("Testing: ft_isdigit");
+		pass2 = 1;
+
+		if (!ft_isdigit('0') || !ft_isdigit('5') || !ft_isdigit('9'))
+			pass = (pass2 = 0);
+		if (ft_isdigit('\'') || ft_isdigit(':') || ft_isdigit(']'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isdigit: PASSED" : "ft_isdigit: FAILED");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart1: PASSED");
