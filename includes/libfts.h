@@ -55,6 +55,12 @@ char	*ft_strdup(const char *s1);
 void	ft_cat(int fd);
 
 /*
+** Bonus
+*/
+int		ft_isupper(int c);
+int		ft_islower(int c);
+
+/*
 **                                /----------\                                **
 ** ----- ----- ----- ----- ----- |  The End   | ----- ----- ----- ----- ----- **
 **                                \----------/                                **

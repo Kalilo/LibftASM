@@ -14,6 +14,9 @@ NAME = libfts.a
 
 SRCS_NAME =		ft_bzero.s			\
 				ft_cat.s			\
+				ft_isalpha.s		\
+				ft_isupper.s		\
+				ft_islower.s		\
 				ft_memcpy.s			\
 				ft_memset.s			\
 				ft_strcat.s			\

@@ -19,6 +19,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 void	error_quit(char *msg)
 {
@@ -57,6 +58,17 @@ void	test_part1(void)
 			pass = (pass2 = 0);
 		free(str);
 		puts((pass2) ? "ft_strcat: PASSED" : "ft_strcat: FAILED");
+	}
+
+	/*test ft_isalpha*/ {
+		puts("Testing: ft_isalpha");
+		pass2 = 1;
+
+		if (!ft_isalpha('A') || !ft_isalpha('g') || !ft_isalpha('z'))
+			pass = (pass2 = 0);
+		if (ft_isalpha('~') || ft_isalpha(' ') || ft_isalpha(']'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isalpha: PASSED" : "ft_isalpha: FAILED");
 	}
 
 	/*end*/

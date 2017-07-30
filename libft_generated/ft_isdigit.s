@@ -5,7 +5,7 @@
 _ft_isdigit:                            ## @ft_isdigit
 	.cfi_startproc
 ## BB#0:
-	pushq	%rbp
+	pushq	%rbp; {
 Ltmp0:
 	.cfi_def_cfa_offset 16
 Ltmp1:
@@ -14,10 +14,10 @@ Ltmp1:
 Ltmp2:
 	.cfi_def_cfa_register %rbp
 	movl	%edi, -8(%rbp)
-	cmpl	$48, -8(%rbp)
+	cmpl	$48, -8(%rbp); cmp 0, rdi
 	jl	LBB0_3
 ## BB#1:
-	cmpl	$57, -8(%rbp)
+	cmpl	$57, -8(%rbp); cmp 9, rdi
 	jg	LBB0_3
 ## BB#2:
 	movl	$1, -4(%rbp)

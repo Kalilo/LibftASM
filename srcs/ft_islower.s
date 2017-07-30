@@ -1,39 +1,34 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_isalpha.s                                       :+:      :+:    :+:    ;
+;    ft_islower.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/30 14:57:20 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/30 14:57:21 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/30 15:19:59 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/30 15:20:01 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 section .text
-	global _ft_isalpha
+	global _ft_islower
 
-;int		ft_isalpha(int c)
-_ft_isalpha:
+_ft_islower:
 	push	rbp
 	mov		rbp, rsp
 
-	cmp		rdi, 65; A
+	cmp		rdi, 97; a
 	jl		ret_false
 	cmp		rdi, 122; z
 	jg		ret_false
 
-	cmp		rdi, 90; Z
-	jl		ret_true
-	cmp		rdi, 97; a
-	jg		ret_true
+	ret_true:
+	mov		rax, 1
+	leave
+	ret
 
 	ret_false:
 	mov		rax, 0
 	leave
 	ret
 
-	ret_true:
-	mov		rax, 1
-	leave
-	ret
