@@ -120,9 +120,16 @@ void	test_part2(void)
 		pass2 = 1;
 		char	*str;
 		char	*s2 = "Hello Worlds!";
+		char	*s3 = (char *)malloc(50);
 		if (!(str = ft_strdup(s2)))
 			error_quit("ft_strdup failed to malloc memory");
 		if (strcmp(str, s2))
+			pass = (pass2 = 0);
+		free(str);
+		s2 = "Hi there!";
+		memcpy(s3, s2, strlen(s2) + 1);
+		str = ft_strdup(s3);
+		if (strcmp(str, s3))
 			pass = (pass2 = 0);
 		free(str);
 		s2 = "";
@@ -130,6 +137,7 @@ void	test_part2(void)
 		if (strcmp(str, s2))
 			pass = (pass2 = 0);
 		free(str);
+		free(s3);
 		puts((pass2) ? "ft_strdup: PASSED" : "ft_strdup: FAILED");
 	}
 
