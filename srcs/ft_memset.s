@@ -14,7 +14,6 @@ section .data
 
 section .text
 	global _ft_memset
-	default rel
 
 ;void	*ft_memset(void *s, int c, size_t n)
 

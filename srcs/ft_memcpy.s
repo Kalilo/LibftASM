@@ -14,7 +14,6 @@ section .data
 
 section .text
 	global _ft_memcpy
-	default rel
 
 ;void	*ft_memcpy(void *dest, const void *src, size_t n)
 

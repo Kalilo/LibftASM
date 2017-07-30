@@ -1,33 +1,34 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_bzero.s                                         :+:      :+:    :+:    ;
+;    ft_cat.s                                           :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/27 08:39:15 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/27 08:39:17 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/30 13:24:10 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/30 13:24:12 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 section .data
+buff
+	.buff resb 2048
 
 section .text
-	global _ft_bzero
+	global _ft_cat
 
-;void	ft_bzero(void *s, size_t n)
-_ft_bzero:
+;void	ft_cat(int fd)
+
+_ft_cat:
 	push	rbp
 	mov		rbp, rsp
-
-	; Init Variables
-	mov		rdi, [rdi]; s
-	mov		rcx, rsi; n
-	mov		al, 0
-
-	;loop
-	cld
-	rep 	stosb
+	
+	mov		r15, rdi
+	cat_loop:
+	;read into buff
+	mov		rdi, r15
+	lea		[rel buff.buff]
+	mov		;
 
 	leave
 	ret

@@ -16,7 +16,6 @@ section .text
 	global _ft_strcat
 	extern _ft_strlen
 	extern _ft_memcpy
-	default rel
 
 ;char	*ft_strcat(char *s1, const char *s2)
 

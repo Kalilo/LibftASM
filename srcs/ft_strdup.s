@@ -17,7 +17,6 @@ section .text
 	extern _ft_strlen
 	extern _ft_memcpy
 	extern _malloc
-	default rel
 
 ;char	*ft_strdup(const char *s1)
 

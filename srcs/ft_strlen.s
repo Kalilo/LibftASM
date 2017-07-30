@@ -14,7 +14,6 @@ section .data
 
 section .text
 	global _ft_strlen
-	default rel
 
 ;size_t	ft_strlen(const char *s)
 
