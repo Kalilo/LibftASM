@@ -15,7 +15,7 @@ section .data
 section .text
 	global _ft_strdup
 	extern _ft_strlen
-	extern _ft_memset
+	extern _ft_memcpy
 	extern _malloc
 	default rel
 
@@ -24,25 +24,50 @@ section .text
 _ft_strdup:
 	push	rbp
 	mov		rbp, rsp
+	sub		rsp, 32
 
-	;backup
+	; ft_strlen
 	mov		r8, rdi
 
-	;get strlen
-	mov		rdi, r8
-	call	_ft_strlen
-	inc		rax
+	wloop:
+	cmp		byte[r8], 0
+	je		break_strlen
+	inc		r8
+	jmp		wloop
+
+	break_strlen:
+	sub		r8, rdi
+	add		r8, 1
+
+	; malloc
+	; push	r8
+	call	_malloc
+	test	rax, rax
+	jz		ret_null
+
+	; save str
 	mov		r9, rax
 
-	;malloc
-	mov		rdi, r9
-	call	_malloc
+	; ; dec		r8
+	; ;strcpy
+	; strcpy:
+	; cmp		r8, 0
+	; je		ret_r9
+	; mov		rax, r9
+	; mov		rbx, rdi
+	; add		rax, r8
+	; add		rbx, r8
+	; ; mov		rcx, [rbx]
+	; ; mov		[rax], rcx
+	; dec		r8
+	; jmp		strcpy
 
-	;copy str
-	mov		rdi, rax
-	mov		rsi, r8
-	mov		rdx, r9
-	call	_ft_memset
+ret_r9:
+	mov		rax, r9
+	leave
+	ret
 
+ret_null:
+	mov		rax, 0
 	leave
 	ret
