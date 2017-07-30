@@ -172,10 +172,46 @@ void	test_part3(void)
 	ft_cat(fd);
 }
 
+void	test_bonuses(void)
+{
+	puts("--- BONUSES ---");
+	char	pass = 1;
+	char	pass2;
+
+	/*test ft_isupper*/ {
+		puts("Testing: ft_isupper");
+		pass2 = 1;
+
+		if (!ft_isupper('A') || !ft_isupper('T') || !ft_isupper('Z'))
+			pass = (pass2 = 0);
+		if (ft_isupper('a') || ft_isupper(' ') || ft_isupper(']'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isupper: PASSED" : "ft_isupper: FAILED");
+	}
+
+	/*test ft_islower*/ {
+		puts("Testing: ft_islower");
+		pass2 = 1;
+
+		if (!ft_islower('a') || !ft_islower('k') || !ft_islower('z'))
+			pass = (pass2 = 0);
+		if (ft_islower('A') || ft_islower('~') || ft_islower(']'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_islower: PASSED" : "ft_islower: FAILED");
+	}
+
+	/*end*/
+	if (pass)
+		puts("\nPart2: PASSED");
+	else
+		puts("\nPart2: FAILED");
+}
+
 int		main(void)
 {
 	test_part1();
 	test_part2();
 	// test_part3();
+	test_bonuses();
 	return (0);
 }
