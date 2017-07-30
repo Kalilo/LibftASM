@@ -156,6 +156,6 @@ int		main(void)
 {
 	test_part1();
 	test_part2();
-	test_part3();
+	// test_part3();
 	return (0);
 }
