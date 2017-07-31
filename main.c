@@ -157,6 +157,12 @@ void	test_part1(void)
 		puts((pass2) ? "ft_tolower: PASSED" : "ft_tolower: FAILED");
 	}
 
+	/*test ft_puts*/ {
+		puts("Testing: ft_puts");
+		ft_puts("If this is displaying correctly, then ft_puts is working");
+		ft_puts("This should be on it's own line");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart1: PASSED");

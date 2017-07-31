@@ -23,6 +23,7 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_isprint.s		\
 				ft_memcpy.s			\
 				ft_memset.s			\
+				ft_puts.s			\
 				ft_strcat.s			\
 				ft_strdup.s			\
 				ft_strlen.s			\
