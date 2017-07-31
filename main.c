@@ -112,6 +112,17 @@ void	test_part1(void)
 		puts((pass2) ? "ft_isascii: PASSED" : "ft_isascii: FAILED");
 	}
 
+	/*test ft_isprint*/ {
+		puts("Testing: ft_isprint");
+		pass2 = 1;
+
+		if (!ft_isprint(32) || !ft_isprint(67) || !ft_isprint(126))
+			pass = (pass2 = 0);
+		if (ft_isprint(31) || ft_isprint(323) || ft_isprint(127))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isprint: PASSED" : "ft_isprint: FAILED");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart1: PASSED");

@@ -20,6 +20,7 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_isdigit.s		\
 				ft_isupper.s		\
 				ft_islower.s		\
+				ft_isprint.s		\
 				ft_memcpy.s			\
 				ft_memset.s			\
 				ft_strcat.s			\
