@@ -292,6 +292,12 @@ void	test_bonuses(void)
 		puts((pass2) ? "ft_islower: PASSED" : "ft_islower: FAILED");
 	}
 
+	/*test ft_putschar*/ {
+		putschar("A");
+		ft_putschar("A");
+		ft_putschar("A");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart2: PASSED");

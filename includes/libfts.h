@@ -57,6 +57,9 @@ void	ft_cat(int fd);
 /*
 ** Bonus
 */
+int     ft_iswhitespace(int c);
+void	ft_putchar(char c);
+void	ft_putchar_fd(char c, int fd);
 int		ft_isupper(int c);
 int		ft_islower(int c);
 
