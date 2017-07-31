@@ -140,6 +140,23 @@ void	test_part1(void)
 		puts((pass2) ? "ft_toupper: PASSED" : "ft_toupper: FAILED");
 	}
 
+	/*test ft_tolower*/ {
+		puts("Testing: ft_tolower");
+		pass2 = 1;
+
+		if (!(ft_tolower('A') == 'a') || !(ft_tolower('Z') == 'z'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('F') == 'f') || !(ft_tolower('Q') == 'q'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('a') == 'a') || !(ft_tolower('z') == 'z'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('9') == '9') || !(ft_tolower('~') == '~'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('@') == '@') || !(ft_tolower('[') == '['))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_tolower: PASSED" : "ft_tolower: FAILED");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart1: PASSED");
