@@ -22,6 +22,7 @@ _ft_strlen:
 	mov		rcx, 4294967295; max long int
 	mov		rax, 0
 
+	cld
 	repne	scasb
 
 	mov		rax, 4294967295; max long int
