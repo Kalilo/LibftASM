@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-on-x86-64
+http://www.int80h.org/bsdasm/#alternate-calling-convention
+https://web.archive.org/web/20120822144129/http://www.cin.ufpe.br/~if817/arquivos/asmtut/index.html
+https://web.archive.org/web/20120626144000/http://www.cin.ufpe.br:80/~if817/arquivos/asmtut/quickstart.html
+https://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm
