@@ -32,6 +32,16 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_iswhitespace.s	\
 				ft_putchar.s		\
 				ft_putchar_fd.s		\
+				ft_putchar.1.s		\
+				ft_putendl.s		\
+				ft_putendl_fd.s		\
+				ft_putstr.s			\
+				ft_putstr_fd.s		\
+				ft_strcmp.s			\
+				ft_strequ.s			\
+				ft_strnequ.s		\
+				ft_swap_int.s		\
+				ft_swap_long.s		\
 
 HEADER_NAMES =	libfts.h			\
 
