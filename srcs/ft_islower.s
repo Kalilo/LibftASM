@@ -13,6 +13,7 @@
 section .text
 	global _ft_islower
 
+;int		ft_islower(int c);
 _ft_islower:
 	push	rbp
 	mov		rbp, rsp

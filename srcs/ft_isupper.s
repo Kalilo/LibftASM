@@ -13,6 +13,7 @@
 section .text
 	global _ft_isupper
 
+;int		ft_isupper(int c);
 _ft_isupper:
 	push	rbp
 	mov		rbp, rsp

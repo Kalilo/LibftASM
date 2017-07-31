@@ -23,9 +23,9 @@ _ft_isalpha:
 	cmp		rdi, 122; z
 	jg		ret_false
 
-	cmp		rdi, 90; Z
+	cmp		rdi, 91; Z + 1
 	jl		ret_true
-	cmp		rdi, 97; a
+	cmp		rdi, 96; a - 1
 	jg		ret_true
 
 	ret_false:

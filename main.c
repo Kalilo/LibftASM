@@ -66,6 +66,8 @@ void	test_part1(void)
 
 		if (!ft_isalpha('A') || !ft_isalpha('g') || !ft_isalpha('z'))
 			pass = (pass2 = 0);
+		if (!ft_isalpha('a') || !ft_isalpha('G') || !ft_isalpha('Z'))
+			pass = (pass2 = 0);
 		if (ft_isalpha('~') || ft_isalpha(' ') || ft_isalpha(']'))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_isalpha: PASSED" : "ft_isalpha: FAILED");
@@ -77,9 +79,26 @@ void	test_part1(void)
 
 		if (!ft_isdigit('0') || !ft_isdigit('5') || !ft_isdigit('9'))
 			pass = (pass2 = 0);
-		if (ft_isdigit('\'') || ft_isdigit(':') || ft_isdigit(']'))
+		if (ft_isdigit('/') || ft_isdigit(':') || ft_isdigit(']'))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_isdigit: PASSED" : "ft_isdigit: FAILED");
+	}
+
+	/*test ft_isalnum*/ {
+		puts("Testing: ft_isalnum");
+		pass2 = 1;
+
+		if (!ft_isalnum('A') || !ft_isalnum('5') || !ft_isalnum('z'))
+			pass = (pass2 = 0);
+		if (!ft_isalnum('0') || !ft_isalnum('9') || !ft_isalnum('Z'))
+			pass = (pass2 = 0);
+		if (!ft_isalnum('a') || !ft_isalnum('k') || !ft_isalnum('Q'))
+			pass = (pass2 = 0);
+		if (ft_isalnum('\'') || ft_isalnum(':') || ft_isalnum(']'))
+			pass = (pass2 = 0);
+		if (ft_isalnum('}') || ft_isalnum('^') || ft_isalnum('-'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isalnum: PASSED" : "ft_isalnum: FAILED");
 	}
 
 	/*end*/
