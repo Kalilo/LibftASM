@@ -1,26 +1,26 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_isdigit.s                                       :+:      :+:    :+:    ;
+;    ft_isascii.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/30 18:00:11 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/30 18:00:12 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/31 08:13:29 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/31 08:13:30 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 section .text
-	global _ft_isdigit
+	global _ft_isascii
 
-;int		ft_isdigit(int c);
-_ft_isdigit:
+;int		ft_isascii(int c);
+_ft_isascii:
 	push	rbp
 	mov		rbp, rsp
 
-	cmp		rdi, 48; a
+	cmp		rdi, 0
 	jl		ret_false
-	cmp		rdi, 57; z
+	cmp		rdi, 127
 	jg		ret_false
 
 	ret_true:
@@ -32,3 +32,4 @@ _ft_isdigit:
 	mov		rax, 0
 	leave
 	ret
+

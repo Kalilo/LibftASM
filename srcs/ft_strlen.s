@@ -19,18 +19,14 @@ _ft_strlen:
 	push	rbp
 	mov		rbp, rsp
 
-	;init variables
-	mov		rax, rdi
+	mov		rcx, 4294967295; max long int
+	mov		rax, 0
 
-	;loop
-wloop:
-	cmp		byte[rax], 0
-	je		end
-	inc		rax
-	jmp		wloop
+	repne	scasb
 
-end:
-	sub		rax, rdi
+	mov		rax, 4294967295; max long int
+	sub		rax, rcx
+	dec		rax
 
 	leave
 	ret

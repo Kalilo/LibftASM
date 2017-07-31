@@ -1,34 +1,32 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isupper.s                                       :+:      :+:    :+:    #
+#    ft_toupper.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/07/30 15:06:45 by khansman          #+#    #+#              #
-#    Updated: 2017/07/30 15:06:46 by khansman         ###   ########.fr        #
+#    Created: 2017/07/31 08:22:07 by khansman          #+#    #+#              #
+#    Updated: 2017/07/31 08:22:08 by khansman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-	global _ft_isupper
+	global _ft_toupper
 
-;int		ft_isupper(int c);
-_ft_isupper:
+;int		ft_toupper(int c);
+_ft_toupper:
 	push	rbp
 	mov		rbp, rsp
 
-	cmp		rdi, 65; A
-	jl		ret_false
-	cmp		rdi, 90; Z
-	jg		ret_false
+	mov		rax, rdi
 
-	ret_true:
-	mov		rax, 1
-	leave
-	ret
+	cmp		rax, 97; a
+	jl		ret
+	cmp		rax, 122; z
+	jg		ret
 
-	ret_false:
-	mov		rax, 0
+	sub		rax, 32
+
+	ret:
 	leave
 	ret

@@ -66,6 +66,8 @@ void	test_part1(void)
 
 		if (!ft_isalpha('A') || !ft_isalpha('g') || !ft_isalpha('z'))
 			pass = (pass2 = 0);
+		if (!ft_isalpha('a') || !ft_isalpha('G') || !ft_isalpha('Z'))
+			pass = (pass2 = 0);
 		if (ft_isalpha('~') || ft_isalpha(' ') || ft_isalpha(']'))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_isalpha: PASSED" : "ft_isalpha: FAILED");
@@ -77,9 +79,88 @@ void	test_part1(void)
 
 		if (!ft_isdigit('0') || !ft_isdigit('5') || !ft_isdigit('9'))
 			pass = (pass2 = 0);
-		if (ft_isdigit('\'') || ft_isdigit(':') || ft_isdigit(']'))
+		if (ft_isdigit('/') || ft_isdigit(':') || ft_isdigit(']'))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_isdigit: PASSED" : "ft_isdigit: FAILED");
+	}
+
+	/*test ft_isalnum*/ {
+		puts("Testing: ft_isalnum");
+		pass2 = 1;
+
+		if (!ft_isalnum('A') || !ft_isalnum('5') || !ft_isalnum('z'))
+			pass = (pass2 = 0);
+		if (!ft_isalnum('0') || !ft_isalnum('9') || !ft_isalnum('Z'))
+			pass = (pass2 = 0);
+		if (!ft_isalnum('a') || !ft_isalnum('k') || !ft_isalnum('Q'))
+			pass = (pass2 = 0);
+		if (ft_isalnum('\'') || ft_isalnum(':') || ft_isalnum(']'))
+			pass = (pass2 = 0);
+		if (ft_isalnum('}') || ft_isalnum('^') || ft_isalnum('-'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isalnum: PASSED" : "ft_isalnum: FAILED");
+	}
+
+	/*test ft_isascii*/ {
+		puts("Testing: ft_isascii");
+		pass2 = 1;
+
+		if (!ft_isascii(0) || !ft_isascii(59) || !ft_isascii(127))
+			pass = (pass2 = 0);
+		if (ft_isascii(-1) || ft_isascii(23323) || ft_isascii(128))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isascii: PASSED" : "ft_isascii: FAILED");
+	}
+
+	/*test ft_isprint*/ {
+		puts("Testing: ft_isprint");
+		pass2 = 1;
+
+		if (!ft_isprint(32) || !ft_isprint(67) || !ft_isprint(126))
+			pass = (pass2 = 0);
+		if (ft_isprint(31) || ft_isprint(323) || ft_isprint(127))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_isprint: PASSED" : "ft_isprint: FAILED");
+	}
+
+	/*test ft_toupper*/ {
+		puts("Testing: ft_toupper");
+		pass2 = 1;
+
+		if (!(ft_toupper('a') == 'A') || !(ft_toupper('z') == 'Z'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('g') == 'G') || !(ft_toupper('t') == 'T'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('A') == 'A') || !(ft_toupper('Z') == 'Z'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('9') == '9') || !(ft_toupper('~') == '~'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('{') == '{') || !(ft_toupper('`') == '`'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_toupper: PASSED" : "ft_toupper: FAILED");
+	}
+
+	/*test ft_tolower*/ {
+		puts("Testing: ft_tolower");
+		pass2 = 1;
+
+		if (!(ft_tolower('A') == 'a') || !(ft_tolower('Z') == 'z'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('F') == 'f') || !(ft_tolower('Q') == 'q'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('a') == 'a') || !(ft_tolower('z') == 'z'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('9') == '9') || !(ft_tolower('~') == '~'))
+			pass = (pass2 = 0);
+		if (!(ft_tolower('@') == '@') || !(ft_tolower('[') == '['))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_tolower: PASSED" : "ft_tolower: FAILED");
+	}
+
+	/*test ft_puts*/ {
+		puts("Testing: ft_puts");
+		ft_puts("If this is displaying correctly, then ft_puts is working");
+		ft_puts("This should be on it's own line");
 	}
 
 	/*end*/

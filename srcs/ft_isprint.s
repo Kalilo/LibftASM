@@ -1,26 +1,26 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_isdigit.s                                       :+:      :+:    :+:    ;
+;    ft_isprint.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/30 18:00:11 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/30 18:00:12 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/31 08:17:52 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/31 08:17:53 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 section .text
-	global _ft_isdigit
+	global _ft_isprint
 
-;int		ft_isdigit(int c);
-_ft_isdigit:
+;int		ft_isprint(int c);
+_ft_isprint:
 	push	rbp
 	mov		rbp, rsp
 
-	cmp		rdi, 48; a
+	cmp		rdi, 32
 	jl		ret_false
-	cmp		rdi, 57; z
+	cmp		rdi, 126
 	jg		ret_false
 
 	ret_true:
