@@ -26,6 +26,7 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_strcat.s			\
 				ft_strdup.s			\
 				ft_strlen.s			\
+				ft_toupper.s		\
 
 HEADER_NAMES =	libfts.h			\
 

@@ -123,6 +123,23 @@ void	test_part1(void)
 		puts((pass2) ? "ft_isprint: PASSED" : "ft_isprint: FAILED");
 	}
 
+	/*test ft_toupper*/ {
+		puts("Testing: ft_toupper");
+		pass2 = 1;
+
+		if (!(ft_toupper('a') == 'A') || !(ft_toupper('z') == 'Z'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('g') == 'G') || !(ft_toupper('t') == 'T'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('A') == 'A') || !(ft_toupper('Z') == 'Z'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('9') == '9') || !(ft_toupper('~') == '~'))
+			pass = (pass2 = 0);
+		if (!(ft_toupper('{') == '{') || !(ft_toupper('`') == '`'))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_toupper: PASSED" : "ft_toupper: FAILED");
+	}
+
 	/*end*/
 	if (pass)
 		puts("\nPart1: PASSED");
