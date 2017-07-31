@@ -1,48 +1,20 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_swap_long.s                                     :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/28 08:56:28 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/28 08:56:29 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/30 15:19:59 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/30 15:20:01 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
-
-extern _malloc
-extern _ft_strlen
-extern _ft_memcpy
+global _ft_swap_long
 
 section .text
 
-_ft_strdup:
-    cmp rdi, 0
-    je nullcase
-    push rdi
-    call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
-    cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
-    pop rsi
-    call _ft_memcpy
-    ret
-
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
-    mov rax, 1
-
-nullcase
-    mov rax, 0
+_ft_swap_long:
+    bswap rdi
+    mov rax, rdi
     ret

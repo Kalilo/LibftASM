@@ -1,48 +1,44 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_putstr_fd.s                                      :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/28 08:56:28 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/28 08:56:29 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/31 08:17:52 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/31 08:17:53 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
+global _ft_putstr_fd
 
-extern _malloc
 extern _ft_strlen
-extern _ft_memcpy
+
+section .data
+
+NULL_STR db "(null)"
 
 section .text
 
-_ft_strdup:
+_ft_putstr_fd:
     cmp rdi, 0
     je nullcase
     push rdi
+    push rsi
     call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
-    cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
+    mov rdx, rax
+    mov rax, MACH_SYSCALL(WRITE)
+    ; mov rax, 0x2000004 same as the above
+    pop rdi
     pop rsi
-    call _ft_memcpy
+    syscall
     ret
 
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
-    mov rax, 1
-
-nullcase
-    mov rax, 0
+nullcase:
+    mov rdi, rsi
+    lea rsi, [rel NULL_STR]
+    mov rdx, 6
+    mov rax, MACH_SYSCALL(WRITE)
+    ; mov rax, 0x2000004 same as the above
+    syscall
     ret

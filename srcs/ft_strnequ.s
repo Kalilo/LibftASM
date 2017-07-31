@@ -1,48 +1,28 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_strnequ.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/28 08:56:28 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/28 08:56:29 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/30 15:19:59 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/30 15:20:01 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
+global _ft_strnequ
 
-extern _malloc
-extern _ft_strlen
-extern _ft_memcpy
+extern _ft_strcmp
 
 section .text
 
-_ft_strdup:
-    cmp rdi, 0
-    je nullcase
-    push rdi
-    call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
+_ft_strnequ:
+    call _ft_strcmp
     cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
-    pop rsi
-    call _ft_memcpy
+    jne notequal
+    mov rax, 0
     ret
 
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
+notequal:
     mov rax, 1
-
-nullcase
-    mov rax, 0
     ret

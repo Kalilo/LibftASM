@@ -1,48 +1,26 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_putendl_fd.s                                     :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/28 08:56:28 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/28 08:56:29 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/31 08:17:52 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/31 08:17:53 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
+global _ft_putendl_fd
 
-extern _malloc
-extern _ft_strlen
-extern _ft_memcpy
+extern _ft_putstr_fd
+extern _ft_putchar_fd
 
 section .text
 
-_ft_strdup:
-    cmp rdi, 0
-    je nullcase
-    push rdi
-    call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
-    cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
+_ft_putendl_fd:
+    push rsi
+    call _ft_putstr_fd
     pop rsi
-    call _ft_memcpy
-    ret
-
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
-    mov rax, 1
-
-nullcase
-    mov rax, 0
+    mov rdi, 10
+    call _ft_putchar_fd
     ret

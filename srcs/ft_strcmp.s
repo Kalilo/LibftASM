@@ -1,7 +1,7 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_strcmp.s                                        :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
@@ -10,39 +10,27 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
-
-extern _malloc
-extern _ft_strlen
-extern _ft_memcpy
+global _ft_strcmp
 
 section .text
 
-_ft_strdup:
-    cmp rdi, 0
-    je nullcase
-    push rdi
-    call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
-    cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
-    pop rsi
-    call _ft_memcpy
-    ret
+_ft_strcmp:
+    mov rdx, 0
 
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
-    mov rax, 1
+loop:
+    cmp byte[rdi], 0
+    je end
+    cmp byte[rsi], 0
+    je end
+    mov al, byte[rsi]
+    cmp byte[rdi], al
+    jne end
+    inc rdi
+    inc rsi
+    jmp loop
 
-nullcase
+end:
     mov rax, 0
+    mov al, byte[rdi]
+    sub al, byte[rsi]
     ret
