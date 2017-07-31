@@ -16,6 +16,7 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_cat.s			\
 				ft_isalnum.s		\
 				ft_isalpha.s		\
+				ft_isascii.s		\
 				ft_isdigit.s		\
 				ft_isupper.s		\
 				ft_islower.s		\
