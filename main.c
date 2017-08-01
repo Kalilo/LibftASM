@@ -294,9 +294,9 @@ void	test_bonuses(void)
 	}
 
 	/*test ft_putschar*/ {
-		putschar("A");
-		ft_putschar("A");
-		ft_putschar("A");
+		putchar('A');
+		ft_putchar(' ');
+		ft_putchar('z');
 	}
 
 	/*end*/
