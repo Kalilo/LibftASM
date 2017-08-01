@@ -15,8 +15,8 @@ global _ft_putchar_fd
 section .text
 
 _ft_putchar_fd:
-    mov rax, MACH_SYSCALL(WRITE)
-    ; mov rax, 0x2000004 same as the above
+    ;mov rax, MACH_SYSCALL(WRITE) same as the above
+    mov rax, 0x2000004
     mov r11, rsi
     push rdi
     mov rsi, rsp

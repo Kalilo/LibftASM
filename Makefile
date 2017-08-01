@@ -32,7 +32,6 @@ SRCS_NAME =		ft_bzero.s			\
 				ft_iswhitespace.s	\
 				ft_putchar.s		\
 				ft_putchar_fd.s		\
-				ft_putchar.1.s		\
 				ft_putendl.s		\
 				ft_putendl_fd.s		\
 				ft_putstr.s			\
