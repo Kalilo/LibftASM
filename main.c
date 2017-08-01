@@ -53,11 +53,17 @@ void	test_part1(void)
 		pass2 = 1;
 
 		char	*str = malloc(50);
+		char	*str2 = " Look at me!";
 		memcpy(str, "Hello World!", 13);
-		ft_strcat(str, "Look at me!");
-		if (!strcmp(str, "Hello World! Look at me!"))
+		ft_strcat(str, str2);
+		if (strcmp(str, "Hello World! Look at me!"))
+			pass = (pass2 = 0);
+		str2 = strdup("2");
+		memcpy(str, "Test: ", 7);
+		if (strcmp(ft_strcat(str, str2), "Test: 2"))
 			pass = (pass2 = 0);
 		free(str);
+		free(str2);
 		puts((pass2) ? "ft_strcat: PASSED" : "ft_strcat: FAILED");
 	}
 
