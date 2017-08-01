@@ -22,7 +22,10 @@ section .text
 _ft_cat:
 	push	rbp
 	mov		rbp, rsp
-	
+
+	cmp		rdi, 0
+	jl		end_cat
+
 	mov		r15, rdi
 	cat_loop:
 	;read into buff
@@ -32,15 +35,23 @@ _ft_cat:
 	mov		rax, 0x2000003
 	syscall
 
+	jc		end_cat; magic fix
+	cmp		rax, 0
+	jle		end_cat
+
 	;write to stdout
 	mov		rdi, 1
 	mov		rdx, rax
 	mov		rax, 0x2000004
 	syscall
 
+	cmp		rax, 0
+	jle		end_cat
+
 	;break if nothing was read
 	cmp		rax, 0
 	jne		cat_loop
 
+	end_cat:
 	leave
 	ret
