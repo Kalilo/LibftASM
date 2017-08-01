@@ -316,9 +316,9 @@ void	test_bonuses(void)
 		puts("Testing: ft_strequ");
 		pass2 = 1;
 
-		if (ft_strequ("Hello", "Hello"))
+		if (!ft_strequ("Hello", "Hello"))
 			pass = (pass2 = 0);
-		if (!ft_strequ("Hello there", "Hello") || !ft_strequ("Hello", "Hello there"))
+		if (ft_strequ("Hello there", "Hello") || ft_strequ("Hello", "Hello there"))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_strequ: PASSED" : "ft_strequ: FAILED");
 	}
