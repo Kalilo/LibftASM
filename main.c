@@ -299,10 +299,55 @@ void	test_bonuses(void)
 		puts((pass2) ? "ft_islower: PASSED" : "ft_islower: FAILED");
 	}
 
-	/*test ft_putschar*/ {
-		putchar('A');
+	/*test ft_strcmp*/ {
+		puts("Testing: ft_strcmp");
+		pass2 = 1;
+
+		if (ft_strcmp("Hello", "Hello"))
+			pass = (pass2 = 0);
+		if (!ft_strcmp("Hello there", "Hello") || !ft_strcmp("Hello", "Hello there"))
+			pass = (pass2 = 0);
+		if (strcmp("Hiefe", "Hgwerg") != ft_strcmp("Hiefe", "Hgwerg"))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strcmp: PASSED" : "ft_strcmp: FAILED");
+	}
+
+	/*test ft_strequ*/ {
+		puts("Testing: ft_strequ");
+		pass2 = 1;
+
+		if (ft_strequ("Hello", "Hello"))
+			pass = (pass2 = 0);
+		if (!ft_strequ("Hello there", "Hello") || !ft_strequ("Hello", "Hello there"))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strequ: PASSED" : "ft_strequ: FAILED");
+	}
+
+	/*test ft_strnequ*/ {
+		puts("Testing: ft_strnequ");
+		pass2 = 1;
+
+		if (!ft_strnequ("Hello", "Hello", 5))
+			pass = (pass2 = 0);
+		if (ft_strnequ("Hello there", "Hello", 6) || ft_strnequ("Hello", "Hello there", 6))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strnequ: PASSED" : "ft_strnequ: FAILED");
+	}
+
+	/*test ft_putschar and ft_putchar_fd*/ {
+		puts("Testing: ft_putschar and ft_putchar_fd");
+		puts("expected output: 'A zY'");
+		ft_putchar('A');
 		ft_putchar(' ');
 		ft_putchar('z');
+		ft_putchar_fd('Y', 1);
+		ft_putchar_fd('\n', 1);
+	}
+
+	/*test ft_putstr && ft_putstr_fd*/ {
+		puts("Testing: ft_putstr && ft_putstr_fd");
+		ft_putstr("If this displays, putstr works. ");
+		ft_putstr_fd("And if this displays, putstr_fd works.\n", 1);
 	}
 
 	/*end*/
