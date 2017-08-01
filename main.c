@@ -312,6 +312,21 @@ void	test_bonuses(void)
 		puts((pass2) ? "ft_strcmp: PASSED" : "ft_strcmp: FAILED");
 	}
 
+	/*test ft_strncmp*/ {
+		puts("Testing: ft_strncmp");
+		pass2 = 1;
+
+		if (ft_strncmp("Hello", "Hello", 5))
+			pass = (pass2 = 0);
+		if (!ft_strncmp("Hello there", "Hello", 6) || !ft_strncmp("Hello", "Hello there", 6))
+			pass = (pass2 = 0);
+		if (strncmp("Hiefe", "Hgwerg", 5) != ft_strncmp("Hiefe", "Hgwerg", 5))
+			pass = (pass2 = 0);
+		if (ft_strncmp("Hello World", "Hello", 5))
+			pass = (pass2 = 0);
+		puts((pass2) ? "ft_strncmp: PASSED" : "ft_strncmp: FAILED");
+	}
+
 	/*test ft_strequ*/ {
 		puts("Testing: ft_strequ");
 		pass2 = 1;
@@ -330,6 +345,8 @@ void	test_bonuses(void)
 		if (!ft_strnequ("Hello", "Hello", 5))
 			pass = (pass2 = 0);
 		if (ft_strnequ("Hello there", "Hello", 6) || ft_strnequ("Hello", "Hello there", 6))
+			pass = (pass2 = 0);
+		if (!ft_strnequ("Hello there", "Hello", 5) || !ft_strnequ("Hello", "Hello there", 5))
 			pass = (pass2 = 0);
 		puts((pass2) ? "ft_strnequ: PASSED" : "ft_strnequ: FAILED");
 	}

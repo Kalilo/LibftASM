@@ -69,8 +69,7 @@ void	ft_putstr_fd(char const *s, int fd);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
-int		ft_swap_int(int i);
-long	ft_swap_long(long l);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /*
 **                                /----------\                                **

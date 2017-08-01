@@ -1,35 +1,34 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strnequ.s                                       :+:      :+:    :+:    ;
+;    ft_strncmp.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/30 15:19:59 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/30 15:20:01 by khansman         ###   ########.fr        ;
+;    Created: 2017/08/01 14:48:22 by khansman          #+#    #+#              ;
+;    Updated: 2017/08/01 14:48:24 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strnequ
-
-extern _ft_strncmp
-
 section .text
+	global	_ft_strncmp
 
-_ft_strnequ:
-    push	rbp
+;int	ft_strncmp(const char *s1, const char *s2, size_t n)
+_ft_strncmp:
+	push	rbp
 	mov		rbp, rsp
 
-    call _ft_strncmp
-    cmp rax, 0
-    jne notequal
-    mov rax, 1
+	mov		rcx, rdx
 
-    leave
-    ret
+	cld
+	repe	cmpsb
 
-notequal:
-    mov rax, 0
+	dec		rdi
+	dec		rsi
 
-    leave
-    ret
+	mov		rax, 0
+	mov		al, byte[rdi]
+	sub		al, byte[rsi]
+
+	leave
+	ret
