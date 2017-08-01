@@ -10,46 +10,36 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_strdup
-
-extern _malloc
-extern _ft_strlen
-extern _ft_memcpy
+section .data
 
 section .text
+    global _ft_strdup
+    extern _ft_strlen
+    extern _ft_memcpy
+    extern _malloc
 
 _ft_strdup:
-    push	rbp
-	mov		rbp, rsp
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 16
 
-    cmp rdi, 0
-    je nullcase
-    push rdi
-    call _ft_strlen
-    inc rax
-    mov rdi, rax
-    push rax
-    push rax
-    call _malloc
-    cmp rax, 0
-    je popcase
-    mov rdi, rax
-    pop r11
-    pop rdx
-    pop rsi
-    call _ft_memcpy
+    push    rdi
+    call    _ft_strlen
+    inc     rax
+    
+    mov     rdi, rax
 
-    leave
-    ret
+    push    rdi
+    call    _malloc
 
-popcase:
-    pop rax
-    pop rdi
-    pop rdi
-    mov rax, 1
+    mov     rdi, rax
+    pop     rdx
+    pop     rsi
 
-nullcase
-    mov rax, 0
+    push    rdx
+    push    rsi
+    push    rdi
+    call    _ft_memcpy
 
     leave
     ret
