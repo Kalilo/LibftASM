@@ -128,7 +128,7 @@ odir:
 
 test:
 	@make all
-	@gcc main.c $(NAME) -I $(INCLUDES_PATH)
+	@gcc main.m $(NAME) -I $(INCLUDES_PATH)
 	@./a.out
 
 clean:
