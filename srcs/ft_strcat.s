@@ -21,36 +21,27 @@ _ft_strcat:
 	push	rbp
 	mov		rbp, rsp
 
+	; save origonal
 	mov		r11, rdi
-	mov		r12, rsi
 
-	; get s1 strlen
-	push	rdi
-	call	_ft_strlen
-	pop		r10
+	; get end of rdi
+find_rdi_end:
+	cmp		byte[rdi], 0
+	je		strcat_cpy
+	inc		rdi
+	jmp		find_rdi_end
 
-	; get end of s1
-	add		rdi, rax
+strcat_cpy:
+	cmp		byte[rsi], 0
+	je		end_strcat
+	mov		al, byte[rsi]
+	mov		byte[rdi], al
+	inc		rdi
+	inc		rsi
+	jmp		strcat_cpy
 
-	; get s2, strlen
-	mov		rax, rsi
-
-	wloop:
-	cmp		byte[rax], 0
-	je		end_s2_len
-	inc		rax
-	jmp		wloop
-	end_s2_len:
-	sub		rax, rsi
-	inc		rax
-
-	; copy
-	mov		rcx, rax
-
-	cld
-	rep		movsb
-
-	; ret
+end_strcat:
+	mov		byte[rdi], 0
 	mov		rax, r11
 
 	leave
