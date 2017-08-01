@@ -1,50 +1,57 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_puts.s                                          :+:      :+:    :+:    ;
+;    ft_cat.s                                           :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/07/28 17:26:32 by khansman          #+#    #+#              ;
-;    Updated: 2017/07/28 17:26:34 by khansman         ###   ########.fr        ;
+;    Created: 2017/07/30 13:24:10 by khansman          #+#    #+#              ;
+;    Updated: 2017/07/30 13:24:12 by khansman         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 section .data
-newline
-	.char db 10
+buff
+	.buff resb 2048
 
 section .text
-	global	_ft_puts
-	extern	_ft_strlen
+	global _ft_cat
 
-;int		ft_puts(int c);
-_ft_puts:
+;void	ft_cat(int fd)
+
+_ft_cat:
 	push	rbp
 	mov		rbp, rsp
-	sub		rsp, 16
 
-	; get strlen
-	push	rdi
-	call	_ft_strlen
-	pop		rsi
+	cmp		rdi, 0
+	jl		end_cat
 
-	; write str
+	mov		r15, rdi
+	cat_loop:
+	;read into buff
+	mov		rdi, r15
+	lea		rsi, [rel buff.buff]
+	mov		rdx, 2048
+	mov		rax, 0x2000003
+	syscall
+
+	jc		end_cat; magic fix
+	cmp		rax, 0
+	jle		end_cat
+
+	;write to stdout
 	mov		rdi, 1
 	mov		rdx, rax
-	mov		rax, 0x2000004; write
+	mov		rax, 0x2000004
 	syscall
 
-	mov		r15, rax
+	cmp		rax, 0
+	jle		end_cat
 
-	; write '\n'
-	mov		rdx, 1
-	lea		rsi, [rel newline.char]
-	mov		rax, 0x2000004; write
-	syscall
+	;break if nothing was read
+	cmp		rax, 0
+	jne		cat_loop
 
-	; return length
-	mov		rax, r15
-
+	end_cat:
 	leave
 	ret
