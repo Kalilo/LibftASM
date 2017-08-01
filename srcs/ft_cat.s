@@ -10,40 +10,42 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-section .data
-buff
-	.buff resb 2048
+global _ft_cat
+
+%define BUFF_SIZE 50
+
+section .bss
+
+BUFF: resb BUFF_SIZE
 
 section .text
-	global _ft_cat
-
-;void	ft_cat(int fd)
 
 _ft_cat:
 	push	rbp
 	mov		rbp, rsp
+	mov r10, rdi
 
-	mov		r15, rdi
-	cat_loop:
-	;read into buff
-	mov		rdi, r15
-	lea		rsi, [rel buff.buff]
-	mov		rdx, 2048
-	mov		rax, 0x2000003
+loop:
+	mov rax, 0x2000003
+	mov rdi, r10
+	lea rsi, [rel BUFF]
+	mov rdx, BUFF_SIZE
+	push r10
 	syscall
-
-	jc		end_cat; magic fix
-
-	;write to stdout
-	mov		rdi, 1
-	mov		rdx, rax
-	mov		rax, 0x2000004
+	pop r10
+	jc ended
+	cmp rax, 0
+	jbe ended
+	mov rdx, rax
+	mov rax, 0x2000004
+	mov rdi, 1
+	lea rsi, [rel BUFF]
+	push r10
 	syscall
+	pop r10
+	jmp loop
 
-	;break if nothing was read
-	cmp		rax, 0
-	jne		cat_loop
-
-	end_cat:
+ended:
+	mov rax, 0
 	leave
 	ret
