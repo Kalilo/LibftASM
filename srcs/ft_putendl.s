@@ -17,6 +17,11 @@ extern _ft_putendl_fd
 section .text
 
 _ft_putendl:
+    push	rbp
+	mov		rbp, rsp
+
     mov rsi, 1
     call _ft_putendl_fd
+
+    leave
     ret

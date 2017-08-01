@@ -15,6 +15,9 @@ global _ft_iswhitespace
 section .text
 
 _ft_iswhitespace:
+    push	rbp
+	mov		rbp, rsp
+
     cmp rdi, 10
     je goto
     cmp rdi, 32
@@ -28,8 +31,11 @@ _ft_iswhitespace:
     cmp rdi, 13
     je goto
     mov rax, 0
+
+    leave
     ret
 
 goto:
     mov rax, 1
+    leave
     ret

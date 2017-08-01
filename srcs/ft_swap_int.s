@@ -15,7 +15,12 @@ global _ft_swap_int
 section .text
 
 _ft_swap_int:
+    push	rbp
+	mov		rbp, rsp
+
     bswap edi
     mov rax, 0
     mov eax, edi
+
+    leave
     ret

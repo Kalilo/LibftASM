@@ -15,6 +15,8 @@ global _ft_strcmp
 section .text
 
 _ft_strcmp:
+    push	rbp
+	mov		rbp, rsp
     mov rdx, 0
 
 loop:
@@ -33,4 +35,6 @@ end:
     mov rax, 0
     mov al, byte[rdi]
     sub al, byte[rsi]
+
+    leave
     ret

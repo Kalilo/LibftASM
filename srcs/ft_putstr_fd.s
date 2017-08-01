@@ -21,6 +21,9 @@ NULL_STR db "(null)"
 section .text
 
 _ft_putstr_fd:
+	push	rbp
+	mov		rbp, rsp
+
 	cmp rdi, 0
 	je nullcase
 	push rdi
@@ -31,6 +34,8 @@ _ft_putstr_fd:
 	pop rdi
 	pop rsi
 	syscall
+
+	leave
 	ret
 
 nullcase:
@@ -39,4 +44,6 @@ nullcase:
 	mov rdx, 6
 	mov rax, 0x2000004 ;mov rax, MACH_SYSCALL(WRITE)
 	syscall
+
+	leave
 	ret

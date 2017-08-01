@@ -19,6 +19,9 @@ extern _ft_memcpy
 section .text
 
 _ft_strdup:
+    push	rbp
+	mov		rbp, rsp
+
     cmp rdi, 0
     je nullcase
     push rdi
@@ -35,6 +38,8 @@ _ft_strdup:
     pop rdx
     pop rsi
     call _ft_memcpy
+
+    leave
     ret
 
 popcase:
@@ -45,4 +50,6 @@ popcase:
 
 nullcase
     mov rax, 0
+
+    leave
     ret

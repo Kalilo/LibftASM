@@ -17,6 +17,9 @@ section .text
 ;char	*ft_strcat(char *s1, const char *s2)
 
 _ft_strcat:
+	push	rbp
+	mov		rbp, rsp
+
 	mov r11, rdi
 
 pass_rdi:
@@ -37,5 +40,7 @@ appending:
 ending_programme
 	mov byte[rdi], 0
 	mov rax, r11
+
+	leave
 	ret
 	

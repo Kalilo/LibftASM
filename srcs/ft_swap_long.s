@@ -15,6 +15,11 @@ global _ft_swap_long
 section .text
 
 _ft_swap_long:
+    push	rbp
+	mov		rbp, rsp
+
     bswap rdi
     mov rax, rdi
+
+    leave
     ret

@@ -17,6 +17,11 @@ extern _ft_putstr_fd
 section .text
 
 _ft_putstr:
+    push	rbp
+	mov		rbp, rsp
+
     mov rsi, 1
     call _ft_putstr_fd
+
+    leave
     ret

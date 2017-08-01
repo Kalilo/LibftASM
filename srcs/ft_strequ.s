@@ -17,12 +17,18 @@ extern _ft_strcmp
 section .text
 
 _ft_strequ:
+    push	rbp
+	mov		rbp, rsp
+
     call _ft_strcmp
     cmp rax, 0
     jne notequal
+
     mov rax, 1
+    leave
     ret
 
 notequal:
     mov rax, 0
+    leave
     ret
