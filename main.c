@@ -54,6 +54,7 @@ void	test_part1(void)
 
 		char	*str = malloc(50);
 		memcpy(str, "Hello World!", 13);
+		ft_strcat(str, "Look at me!");
 		if (!strcmp(str, "Hello World! Look at me!"))
 			pass = (pass2 = 0);
 		free(str);
